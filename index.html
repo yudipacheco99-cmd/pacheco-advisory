@@ -115,41 +115,23 @@
       box-shadow: 0 12px 34px rgba(16,37,31,.07);
     }
     .nav-row { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
-    .brand { display: flex; align-items: center; gap: 13px; text-decoration: none; transition: opacity 180ms var(--ease); }
-    .brand:hover { opacity: .86; }
-    .brand:hover .brand-mark { transform: translateY(-2px) rotate(-2deg); box-shadow: 5px 5px 0 rgba(210,176,120,.18); }
-    .brand-mark {
-      position: relative;
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border: 1px solid currentColor;
-      font-family: "Fraunces", serif;
-      font-size: 17px;
-      letter-spacing: -.05em;
-      transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+    .brand {
+      width: 300px;
+      flex: 0 0 auto;
+      text-decoration: none;
+      transition: opacity 180ms var(--ease), transform 180ms var(--ease);
     }
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      right: -5px;
-      bottom: -5px;
-      width: 13px;
-      height: 13px;
-      border-right: 1px solid var(--brass-light);
-      border-bottom: 1px solid var(--brass-light);
+    .brand:hover { opacity: .9; transform: translateY(-1px); }
+    .brand-logo {
+      width: 100%;
+      height: auto;
+      max-height: 50px;
+      object-fit: contain;
+      object-position: left center;
+      filter: brightness(0) invert(1);
+      transition: filter 220ms var(--ease), transform 220ms var(--ease);
     }
-    .brand-name { font-family: "Fraunces", serif; font-size: 18px; line-height: 1.05; }
-    .brand-name small {
-      display: block;
-      margin-top: 5px;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 8px;
-      letter-spacing: .17em;
-      text-transform: uppercase;
-      opacity: .66;
-    }
+    .site-header.scrolled .brand-logo { filter: none; }
     .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-links > a:not(.nav-cta) {
       position: relative;
@@ -663,8 +645,8 @@
     @media (max-width: 580px) {
       .shell, .hero-shell { width: min(calc(100% - 32px), var(--max)); }
       .section-pad { padding: 76px 0; }
-      .brand-name { font-size: 16px; }
-      .brand-name small { display: none; }
+      .brand { width: 210px; }
+      .brand-logo { max-height: 38px; }
       .hero-shell { padding-bottom: 56px; }
       .hero h1 { font-size: clamp(3rem, 15vw, 4.25rem); }
       .hero-actions { align-items: stretch; flex-direction: column; }
@@ -721,8 +703,7 @@
   <header class="site-header" id="siteHeader">
     <div class="shell nav-row">
       <a class="brand" href="#top" aria-label="Pacheco and Advisory Co. home">
-        <span class="brand-mark" aria-hidden="true">P&amp;A</span>
-        <span class="brand-name">Pacheco <span style="color:var(--brass-light)">&amp;</span> Advisory Co.<small>Construction Finance</small></span>
+        <img class="brand-logo" src="pacheco-advisory-logo.svg" alt="Pacheco &amp; Advisory Co. — Construction Finance &amp; Executive Advisory" width="720" height="120" />
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
         <a href="#difference">Difference</a>
