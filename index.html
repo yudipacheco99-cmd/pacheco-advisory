@@ -11,6 +11,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pachecoadvisory.com/" />
   <link rel="canonical" href="https://pachecoadvisory.com/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -470,7 +472,7 @@
 
     .founder { background: var(--stone-50); }
     .founder-layout { display: grid; grid-template-columns: .86fr 1.14fr; gap: 88px; align-items: center; }
-    .founder-card { position: relative; min-height: 590px; padding: 44px; display: flex; flex-direction: column; justify-content: space-between; color: var(--white); background: var(--forest-900); box-shadow: var(--shadow); overflow: hidden; }
+    .founder-card { position: relative; min-height: 620px; margin: 0; color: var(--white); background: var(--forest-900); box-shadow: var(--shadow); overflow: hidden; }
     .founder-card::before {
       content: "";
       position: absolute;
@@ -482,10 +484,20 @@
       background-size: 42px 42px;
     }
     .founder-card > * { position: relative; z-index: 2; }
-    .founder-monogram { width: 132px; height: 132px; display: grid; place-items: center; border: 1px solid rgba(210,176,120,.7); font-family: "Fraunces", serif; font-size: 47px; }
-    .founder-monogram::after { content: "Founder / Principal"; position: absolute; left: 44px; top: 190px; color: var(--brass-light); font-family: "IBM Plex Mono", monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
+    .founder-portrait { position: absolute; inset: 0; }
+    .founder-portrait::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(16,37,31,.98) 0%, rgba(16,37,31,.55) 38%, rgba(16,37,31,.06) 72%); pointer-events: none; }
+    .founder-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; filter: saturate(.86) contrast(1.03); }
+    .founder-photo-placeholder { position: absolute; inset: 0; display: grid; place-items: center; padding: 44px; text-align: center; background: radial-gradient(circle at 50% 32%, rgba(210,176,120,.16), transparent 37%); }
+    .founder-photo-placeholder::before, .founder-photo-placeholder::after { content: ""; position: absolute; width: 64px; height: 64px; }
+    .founder-photo-placeholder::before { top: 34px; left: 34px; border-top: 1px solid var(--brass-light); border-left: 1px solid var(--brass-light); }
+    .founder-photo-placeholder::after { right: 34px; bottom: 34px; border-right: 1px solid var(--brass-light); border-bottom: 1px solid var(--brass-light); }
+    .founder-photo-placeholder span { position: absolute; top: 48px; color: var(--brass-light); font-family: "IBM Plex Mono", monospace; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
+    .founder-photo-placeholder strong { font-family: "Fraunces", serif; font-size: 112px; font-weight: 400; letter-spacing: -.06em; }
+    .founder-photo-placeholder small { position: absolute; bottom: 54px; color: rgba(255,255,255,.64); font-family: "IBM Plex Mono", monospace; font-size: 8px; letter-spacing: .13em; text-transform: uppercase; }
+    .founder-caption { position: absolute; right: 0; bottom: 0; left: 0; z-index: 3 !important; padding: 34px 42px 38px; }
     .founder-quote { max-width: 380px; margin: 0; font-family: "Fraunces", serif; font-size: 28px; line-height: 1.25; }
     .founder-quote em { color: var(--brass-light); }
+    .founder-caption small { display: block; margin-top: 18px; color: var(--brass-light); font-family: "IBM Plex Mono", monospace; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
     .founder-copy h2 { font-size: clamp(2.55rem, 5vw, 4.8rem); }
     .founder-copy .role { margin: 14px 0 0; color: var(--brass); font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .11em; text-transform: uppercase; }
     .founder-copy p { color: var(--muted); font-size: 14px; }
@@ -638,7 +650,7 @@
       .engagement-head { display: block; }
       .engagement-head .section-intro { margin-top: 24px; }
       .engagement { grid-template-columns: 60px 1fr .7fr; }
-      .founder-card { min-height: 470px; }
+      .founder-card { min-height: 620px; }
       .founder-copy { max-width: 720px; }
     }
 
@@ -670,8 +682,12 @@
       .engagement { grid-template-columns: 38px 1fr; gap: 12px; align-items: start; }
       .engagement-price { grid-column: 2; text-align: left; margin-top: 14px; }
       .method-step { grid-template-columns: 72px 1fr; gap: 16px; }
-      .founder-card { min-height: 440px; padding: 30px; }
-      .founder-monogram::after { left: 30px; top: 176px; }
+      .founder-card { min-height: 560px; }
+      .founder-photo-placeholder { padding: 28px; }
+      .founder-photo-placeholder::before { top: 24px; left: 24px; }
+      .founder-photo-placeholder::after { right: 24px; bottom: 24px; }
+      .founder-photo-placeholder strong { font-size: 88px; }
+      .founder-caption { padding: 28px 26px 30px; }
       .founder-quote { font-size: 24px; }
       .inquiry-form { padding: 26px 20px; }
       .booking-head { padding: 25px 22px 20px; }
@@ -758,9 +774,9 @@
             <strong>Systems, not dependency.</strong>
             <small>Every workflow is documented, taught, and handed over.</small>
           </div>
-          <!-- EXECUTIVE HEADSHOT: upload a portrait, then place its filename or URL in data-src below. -->
+          <!-- EXECUTIVE HEADSHOT: upload a portrait and set HEADSHOT_URL near the bottom of this file. -->
           <div class="hero-headshot" aria-label="Executive headshot area">
-            <img id="heroHeadshot" data-src="" alt="Yudibeth Pacheco, Founder and Principal" hidden />
+            <img id="heroHeadshot" alt="Yudibeth Pacheco, Founder and Principal" hidden />
             <div class="headshot-placeholder" id="headshotPlaceholder" aria-hidden="true"><strong>YP</strong><span>Executive portrait<br />Photo ready</span></div>
           </div>
         </div>
@@ -990,10 +1006,16 @@
 
     <section class="founder section-pad" id="founder">
       <div class="shell founder-layout">
-        <div class="founder-card reveal">
-          <div class="founder-monogram" aria-hidden="true">YP</div>
-          <blockquote class="founder-quote">“I build the structure, teach the team, and measure success by the client’s <em>independence.</em>”</blockquote>
-        </div>
+        <figure class="founder-card reveal">
+          <div class="founder-portrait" aria-label="Professional headshot area">
+            <img id="founderHeadshot" alt="Yudibeth Pacheco, Financial Controller and Founder of Pacheco &amp; Advisory Co." hidden />
+            <div class="founder-photo-placeholder" id="founderPhotoPlaceholder" aria-hidden="true"><span>Professional portrait</span><strong>YP</strong><small>Headshot upload ready</small></div>
+          </div>
+          <figcaption class="founder-caption">
+            <blockquote class="founder-quote">“I build the structure, teach the team, and measure success by the client’s <em>independence.</em>”</blockquote>
+            <small>Yudibeth Pacheco · Founder &amp; Principal</small>
+          </figcaption>
+        </figure>
         <div class="founder-copy reveal">
           <p class="eyebrow">Founder &amp; Principal</p>
           <h2 class="display">Yudibeth Pacheco</h2>
@@ -1183,13 +1205,20 @@
       }
     }
 
+    /* EXECUTIVE HEADSHOT: upload a portrait beside index.html and enter its filename or URL here. */
+    const HEADSHOT_URL = '';
     const heroHeadshot = document.getElementById('heroHeadshot');
+    const founderHeadshot = document.getElementById('founderHeadshot');
     const headshotPlaceholder = document.getElementById('headshotPlaceholder');
-    const headshotSource = heroHeadshot.dataset.src.trim();
+    const founderPhotoPlaceholder = document.getElementById('founderPhotoPlaceholder');
+    const headshotSource = HEADSHOT_URL.trim();
     if (headshotSource) {
       heroHeadshot.src = headshotSource;
+      founderHeadshot.src = headshotSource;
       heroHeadshot.hidden = false;
+      founderHeadshot.hidden = false;
       headshotPlaceholder.hidden = true;
+      founderPhotoPlaceholder.hidden = true;
     }
 
     /* CALENDLY SETUP: paste the complete public event URL between the quotes below. */
