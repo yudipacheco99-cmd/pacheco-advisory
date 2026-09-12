@@ -411,6 +411,19 @@
     .vertical-card .v-num { color: var(--brass-light); font-family: "IBM Plex Mono", monospace; font-size: 9px; letter-spacing: .12em; }
     .vertical-card h3 { margin: 42px 0 11px; font-family: "Fraunces", serif; font-size: 28px; font-weight: 500; }
     .vertical-card p { max-width: 460px; margin: 0; color: #b8c4bb; font-size: 13px; }
+    .vertical-cta { display: inline-flex; align-items: center; gap: 9px; margin-top: 22px; color: var(--brass-light); font-family: "IBM Plex Mono", monospace; font-size: 8px; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; transition: color 180ms var(--ease), transform 180ms var(--ease); }
+    .vertical-cta:hover { color: var(--white); transform: translateX(4px); }
+    .luxury-case { position: relative; z-index: 2; margin-top: 22px; display: grid; grid-template-columns: .72fr 1.28fr; border: 1px solid rgba(210,176,120,.42); background: rgba(255,255,255,.035); }
+    .luxury-case-lead { padding: 34px; border-right: 1px solid rgba(255,255,255,.14); }
+    .luxury-case-lead small { color: var(--brass-light); font-family: "IBM Plex Mono", monospace; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+    .luxury-case-lead h3 { margin: 28px 0 12px; font-family: "Fraunces", serif; font-size: 31px; font-weight: 500; line-height: 1.08; }
+    .luxury-case-lead p { margin: 0; color: #b8c4bb; font-size: 12px; }
+    .luxury-case-facts { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .luxury-case-fact { min-height: 145px; padding: 30px; border-right: 1px solid rgba(255,255,255,.14); border-bottom: 1px solid rgba(255,255,255,.14); }
+    .luxury-case-fact:nth-child(even) { border-right: 0; }
+    .luxury-case-fact:nth-last-child(-n+2) { border-bottom: 0; }
+    .luxury-case-fact strong { display: block; margin-bottom: 10px; color: var(--brass-light); font-family: "IBM Plex Mono", monospace; font-size: 8px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    .luxury-case-fact span { color: #e5ebe6; font-size: 12px; line-height: 1.6; }
     .compliance-row { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 8px; }
     .compliance-row span { padding: 9px 12px; border: 1px solid rgba(210,176,120,.34); color: #dbe3dc; font-family: "IBM Plex Mono", monospace; font-size: 8px; letter-spacing: .09em; text-transform: uppercase; }
 
@@ -559,6 +572,11 @@
     .email-alternative > summary { padding: 22px 64px 22px 24px; color: var(--white); font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
     .email-alternative > summary::before, .email-alternative > summary::after { right: 24px; top: 30px; background: var(--brass-light); }
     .email-alternative[open] > summary { border-bottom: 1px solid rgba(255,255,255,.16); }
+    #investor-inquiry { scroll-margin-top: 110px; border-color: rgba(210,176,120,.5); }
+    .investor-alternative > summary { color: var(--forest-950); background: var(--brass-light); }
+    .investor-alternative > summary::before, .investor-alternative > summary::after { background: var(--forest-900); }
+    .investor-alternative[open] > summary { border-bottom-color: var(--stone-300); }
+    .investor-callout { margin: 0 0 24px; padding: 16px 18px; border-left: 2px solid var(--brass); color: var(--muted); background: var(--stone-100); font-size: 11px; }
     .inquiry-form { margin: 0; padding: 36px; color: var(--ink); background: var(--stone-50); }
     .form-head { margin-bottom: 26px; padding-bottom: 22px; border-bottom: 1px solid var(--stone-200); }
     .form-head strong { display: block; font-family: "Fraunces", serif; font-size: 29px; font-weight: 500; }
@@ -644,6 +662,8 @@
       .position-sticky, .method-copy, .faq-intro, .contact-copy { position: static; }
       .case-head { display: block; }
       .case-head .section-intro { margin-top: 24px; }
+      .luxury-case { grid-template-columns: 1fr; }
+      .luxury-case-lead { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
       .first-30-head { grid-template-columns: 1fr; gap: 20px; }
       .booking-head { align-items: start; flex-direction: column; }
       .outcome-grid { grid-template-columns: 1fr 1fr; }
@@ -675,6 +695,9 @@
       .outcome-grid, .vertical-grid, .credentials, .field-grid, .case-grid, .impact-grid { grid-template-columns: 1fr; }
       .impact-card { min-height: 225px; }
       .vertical-card:last-child { grid-column: auto; }
+      .luxury-case-facts { grid-template-columns: 1fr; }
+      .luxury-case-fact, .luxury-case-fact:nth-child(even), .luxury-case-fact:nth-last-child(-n+2) { min-height: auto; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+      .luxury-case-fact:last-child { border-bottom: 0; }
       .case-card, .case-card:last-child { grid-column: auto; min-height: 430px; }
       .timeline-grid { grid-template-columns: 1fr; }
       .timeline-step { min-height: 190px; }
@@ -932,9 +955,22 @@
         <p class="section-intro">Finance advice is more useful when it understands the work behind the numbers—across trades, project types, teams, and operating models.</p>
         <div class="vertical-grid">
           <article class="vertical-card reveal"><span class="v-num">01 / GC</span><h3>General Construction</h3><p>Residential, multifamily, and commercial contractors requiring integrated job-cost tracking, draw management, compliance documentation, and executive reporting.</p></article>
-          <article class="vertical-card reveal"><span class="v-num">02 / LUX</span><h3>Luxury Spec Home Development</h3><p><strong>Investor-Side Development Advisor / Owner’s Representative</strong><br />Serving as the connection between investor and builder on multimillion-dollar residential projects—monitoring budgets, draws, cost-to-complete, changes, documentation, and progress so the investor maintains an informed financial and operational view.</p></article>
+          <article class="vertical-card reveal"><span class="v-num">02 / LUX</span><h3>Luxury Spec Home Development</h3><p><strong>Investor-Side Development Advisor / Owner’s Representative</strong><br />Serving as the connection between investor and builder on multimillion-dollar residential projects—monitoring budgets, draws, cost-to-complete, changes, documentation, and progress so the investor maintains an informed financial and operational view.</p><a class="vertical-cta" href="#investor-inquiry">Discuss an investor project <span aria-hidden="true">→</span></a></article>
           <article class="vertical-card reveal"><span class="v-num">03 / MULTI-TRADE</span><h3>Construction Multi-Trade Experience</h3><p>Broad experience across construction trades and operating models, including labor-intensive and multi-state environments. The financial architecture adapts to each company’s contracts, workforce, cost structure, compliance requirements, and project-delivery model.</p></article>
         </div>
+        <article class="luxury-case reveal" aria-label="Representative luxury project engagement">
+          <div class="luxury-case-lead">
+            <small>Representative luxury-project engagement</small>
+            <h3>Protect investor visibility from draw to delivery.</h3>
+            <p>A private investor needs a trusted financial and operational link to the builder throughout a multimillion-dollar residential project. This example reflects the advisory role and process without identifying a client or promising a particular outcome.</p>
+          </div>
+          <div class="luxury-case-facts">
+            <div class="luxury-case-fact"><strong>Role</strong><span>Serve as Investor-Side Development Advisor / Owner’s Representative and maintain a clear communication bridge between investor and builder.</span></div>
+            <div class="luxury-case-fact"><strong>Financial oversight</strong><span>Monitor budgets, construction draws, committed costs, change activity, and cost-to-complete information.</span></div>
+            <div class="luxury-case-fact"><strong>Project oversight</strong><span>Follow milestones, documentation, open questions, approvals, and items requiring investor attention.</span></div>
+            <div class="luxury-case-fact"><strong>Investor value</strong><span>Give the investor one organized view of financial position, project progress, key decisions, and emerging variances.</span></div>
+          </div>
+        </article>
         <div class="compliance-row" aria-label="Compliance expertise">
           <span>Business registration</span><span>IRS obligations</span><span>Texas Workforce Commission</span><span>Texas Franchise Tax</span><span>Certified payroll</span><span>Sales tax</span><span>Subcontractor compliance</span>
         </div>
@@ -1066,6 +1102,7 @@
               <div><dt>Languages</dt><dd>English &amp; Spanish</dd></div>
               <div><dt>Email</dt><dd><a href="mailto:yudi@pachecoadvisory.com">yudi@pachecoadvisory.com</a></dd></div>
             </dl>
+            <a class="button button-light" href="#investor-inquiry">Real estate investor inquiry <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
           <div class="booking-panel reveal" data-reveal="right">
             <div class="booking-head"><div><strong>Select a date and time</strong><span>Available times will appear in your local time zone.</span></div><span class="booking-badge">Powered by Calendly</span></div>
@@ -1084,6 +1121,36 @@
           </div>
         </div>
 
+        <details class="email-alternative investor-alternative reveal" id="investor-inquiry">
+          <summary>Planning or managing a luxury project? Start an investor inquiry</summary>
+          <form class="inquiry-form" id="investorInquiryForm">
+            <div class="form-head"><strong>Tell us about the investment and project</strong><span>This brief intake prepares an email for an investor-side owner’s representation conversation.</span></div>
+            <p class="investor-callout">Do not include bank credentials, account numbers, tax identification numbers, or confidential deal documents. Those materials can be exchanged securely after fit and scope are confirmed.</p>
+            <div class="field-grid">
+              <div class="field"><label for="investorName">First &amp; last name *</label><input id="investorName" name="investorName" type="text" autocomplete="name" required /></div>
+              <div class="field"><label for="investorEmail">Email address *</label><input id="investorEmail" name="investorEmail" type="email" autocomplete="email" required /></div>
+            </div>
+            <div class="field-grid">
+              <div class="field"><label for="investorRole">Your role</label><select id="investorRole" name="investorRole"><option>Owner / Investor</option><option>Investment Partner</option><option>Family Office Representative</option><option>Lender or Capital Partner</option><option>Other</option></select></div>
+              <div class="field"><label for="projectType">Project type</label><select id="projectType" name="projectType"><option>Luxury custom or spec home</option><option>Multifamily development</option><option>Major renovation or repositioning</option><option>Other construction investment</option></select></div>
+            </div>
+            <div class="field-grid">
+              <div class="field"><label for="projectStage">Current stage</label><select id="projectStage" name="projectStage"><option>Evaluating the opportunity</option><option>Preconstruction / budgeting</option><option>Active construction</option><option>Approaching completion</option><option>Post-completion review</option></select></div>
+              <div class="field"><label for="projectValue">Estimated project value</label><select id="projectValue" name="projectValue"><option>Prefer not to say</option><option>Under $3 million</option><option>$3–$5 million</option><option>$5–$10 million</option><option>More than $10 million</option></select></div>
+            </div>
+            <div class="field-grid">
+              <div class="field"><label for="projectLocation">Project location</label><input id="projectLocation" name="projectLocation" type="text" autocomplete="address-level2" placeholder="City and state" /></div>
+              <div class="field"><label for="builderStatus">Builder status</label><select id="builderStatus" name="builderStatus"><option>Builder selected and under contract</option><option>Builder selected; contract in progress</option><option>Comparing builders</option><option>No builder selected</option></select></div>
+            </div>
+            <div class="field"><label for="investorNeed">Where do you need greater visibility or representation?</label><textarea id="investorNeed" name="investorNeed" placeholder="Describe the project, current concerns, communication gaps, budget or draw questions, timeline, and the decisions you need to make."></textarea></div>
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Open investor inquiry email <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <p class="form-note">Your email app opens with the inquiry prepared for your review before sending.</p>
+            </div>
+            <p class="form-status" id="investorFormStatus" role="status" aria-live="polite"></p>
+          </form>
+        </details>
+
         <details class="email-alternative reveal">
           <summary>Prefer email? Send a written inquiry</summary>
           <form class="inquiry-form" id="inquiryForm">
@@ -1094,7 +1161,7 @@
             </div>
             <div class="field-grid">
               <div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
-              <div class="field"><label for="engagement">Engagement of interest</label><select id="engagement" name="engagement"><option value="Not sure yet">Not sure yet</option><option>PAC Foundation™</option><option>PAC Financial Audit™</option><option>PAC BUILD™</option><option>PAC Advisory Circle™</option></select></div>
+              <div class="field"><label for="engagement">Engagement of interest</label><select id="engagement" name="engagement"><option value="Not sure yet">Not sure yet</option><option>PAC Foundation™</option><option>PAC Financial Audit™</option><option>PAC BUILD™</option><option>PAC Advisory Circle™</option><option>Investor-Side Owner’s Representation</option></select></div>
             </div>
             <div class="field"><label for="language">Preferred language</label><select id="language" name="language"><option>English</option><option>Español</option></select></div>
             <div class="field"><label for="message">What is happening in the business?</label><textarea id="message" name="message" placeholder="Briefly describe your company, current systems, and the financial or operational problem you want to solve."></textarea></div>
@@ -1257,6 +1324,31 @@
         data.get('message') || 'Not provided'
       ].join('\n');
       formStatus.textContent = 'Your email application is opening with the inquiry prepared.';
+      window.location.href = `mailto:yudi@pachecoadvisory.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+
+    const investorForm = document.getElementById('investorInquiryForm');
+    const investorFormStatus = document.getElementById('investorFormStatus');
+    investorForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!investorForm.reportValidity()) return;
+      const data = new FormData(investorForm);
+      const projectLocation = data.get('projectLocation') || 'Location not provided';
+      const subject = `Luxury Project Investor Inquiry — ${projectLocation}`;
+      const body = [
+        `Name: ${data.get('investorName')}`,
+        `Email: ${data.get('investorEmail')}`,
+        `Investor role: ${data.get('investorRole')}`,
+        `Project type: ${data.get('projectType')}`,
+        `Project stage: ${data.get('projectStage')}`,
+        `Estimated project value: ${data.get('projectValue')}`,
+        `Project location: ${projectLocation}`,
+        `Builder status: ${data.get('builderStatus')}`,
+        '',
+        'Requested visibility or representation:',
+        data.get('investorNeed') || 'Not provided'
+      ].join('\n');
+      investorFormStatus.textContent = 'Your investor inquiry is opening in your email app for review.';
       window.location.href = `mailto:yudi@pachecoadvisory.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   </script>
